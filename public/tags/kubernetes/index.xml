@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kubernetes on Paper</title>
+    <link>/tags/kubernetes/</link>
+    <description>Recent content in kubernetes on Paper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
+    <lastBuildDate>Sat, 19 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>怎么开发云原生应用？</title>
+      <link>/post/posts/kubernetes-programming/</link>
+      <pubDate>Sat, 19 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/kubernetes-programming/</guid>
+      <description>&lt;p&gt;如果你想让你的应用充分利用kubernetes提供的能力，本文将提供一些思路和代码示例。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

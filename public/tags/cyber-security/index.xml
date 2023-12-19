@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cyber-security on Paper</title>
+    <link>/tags/cyber-security/</link>
+    <description>Recent content in cyber-security on Paper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
+    <lastBuildDate>Sat, 25 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/cyber-security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>网络安全应该从哪几个方面考虑？</title>
+      <link>/post/posts/cyber-security/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/cyber-security/</guid>
+      <description>&lt;p&gt;在网络通信的过程中，从攻击者的角度来说，他可以窃听你们传输的数据，也可以修改，插入，删除（后面统称为篡改）传输数据。也可以发起大量的无意义的访问请求，增加服务器负载。
+本文将介绍这些问题的解决思路。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

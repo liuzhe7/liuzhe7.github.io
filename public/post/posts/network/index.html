@@ -1,0 +1,530 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>计算机网络漫游 - Paper</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="当两个设备要通信时，计算机网络就被发明出来了。本文将梳理出网络通信的主要逻辑。" />
+  <meta name="author" content="Liu Zhe" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  
+  
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.104.3" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="计算机网络漫游">
+<meta itemprop="description" content="当两个设备要通信时，计算机网络就被发明出来了。本文将梳理出网络通信的主要逻辑。"><meta itemprop="datePublished" content="2020-04-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-04-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="197">
+<meta itemprop="keywords" content="network," />
+  
+  <meta property="og:title" content="计算机网络漫游" />
+<meta property="og:description" content="当两个设备要通信时，计算机网络就被发明出来了。本文将梳理出网络通信的主要逻辑。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/posts/network/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-04-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-05T00:00:00+00:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="计算机网络漫游"/>
+<meta name="twitter:description" content="当两个设备要通信时，计算机网络就被发明出来了。本文将梳理出网络通信的主要逻辑。"/>
+
+  
+  
+  
+  <link rel="canonical" href="/post/posts/network/" />
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="/"
+      >Paper</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/liuzhe7"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">计算机网络漫游</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Apr 5, 2020</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>当两个设备要通信时，计算机网络就被发明出来了。本文将梳理出网络通信的主要逻辑。</p>
+<ul>
+<li><a href="#%E5%9B%A0%E7%89%B9%E7%BD%91">因特网</a></li>
+<li><a href="#%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E4%B8%8E%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2">分组交换与电路交换</a></li>
+<li><a href="#%E6%97%B6%E5%BB%B6%E5%92%8C%E4%B8%A2%E5%8C%85">时延和丢包</a></li>
+<li><a href="#%E5%90%9E%E5%90%90%E9%87%8F">吞吐量</a></li>
+<li><a href="#%E5%8D%8F%E8%AE%AE%E5%88%86%E5%B1%82">协议分层</a>
+<ul>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%B1%82">应用层</a>
+<ul>
+<li><a href="#http11%E5%92%8C%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E">http1.1和队头阻塞</a></li>
+<li><a href="#http20">http2.0</a></li>
+<li><a href="#http3">http3</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BC%A0%E8%BE%93%E5%B1%82">传输层</a>
+<ul>
+<li><a href="#tcp">tcp</a></li>
+<li><a href="#upd">upd</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BD%91%E7%BB%9C%E5%B1%82">网络层</a>
+<ul>
+<li><a href="#ipv4%E4%B8%8Eipv6">ipv4与ipv6</a></li>
+<li><a href="#%E6%80%8E%E4%B9%88%E4%BB%8Eipv4%E8%BF%87%E5%BA%A6%E5%88%B0ipv6">怎么从ipv4过度到ipv6？</a></li>
+</ul>
+</li>
+<li><a href="#%E9%93%BE%E8%B7%AF%E5%B1%82">链路层</a></li>
+<li><a href="#%E7%89%A9%E7%90%86%E5%B1%82">物理层</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+<h1 id="因特网">因特网</h1>
+<p>因特网是一个世界范围的计算机网络，它互联了全是界数十亿计算设备。所有这些设备都称为<strong>主机</strong>或者<strong>端系统</strong>。到2015年大约有50亿台设备接入因特网。这些端设备
+<strong>由网络层的路由器和链路层的交换机连接在一起</strong>。所有的这些硬件都需要遵循一定的协议才能正常运行。</p>
+<h1 id="分组交换与电路交换">分组交换与电路交换</h1>
+<p>电路交换中，端系统通话期间预留通信所需要的资源，意味着在这期间它是独占这些资源的，打电话就是这种情况。</p>
+<p>互联网主要使用的是另一种技术，分组交换，是所有用户共享资源的的，本文主要介绍这一种。</p>
+<h1 id="时延和丢包">时延和丢包</h1>
+<p>分组从一台主机出发，通过一系列路由器，到达另一台主机，整个历程的耗时就称为时延。我们对时延进行分类，可以梳理出以下四种类型。</p>
+<div align="center">
+<p><img src="/delay.png" height="50%" width="50%"></img></p>
+</div>
+<ul>
+<li>
+<p>处理时延</p>
+<p>路由器计算下一跳该转发到哪（三层功能），检查比特级别的差错（二层功能）所消耗的时间，该时延通常是微秒级别。</p>
+</li>
+<li>
+<p>排队时延</p>
+<p>分组交换是所有用户共享的，比如当一个路由器接收到多个方向发送来的数据，都想转发到一个方向，<strong>接收速度大于发送速度就要排队</strong>，路由器内部有个缓存队列，
+会把接收到的数据包保存下来，等待队列前面的数据包发送完成，队列满了新来的数据包就会被丢弃。<strong>程序员常说的丢包就是这种情况，但它不代表最终的目标端系统没有收到数据包，
+因为可能还有重发机制兜底。</strong> 实际的排队延时通常是微秒或者毫秒级别。</p>
+</li>
+<li>
+<p>传输时延</p>
+<p>这个延时取决于路由器把数字比特推送到链路的能力，这取决于网络链路，网卡的带宽。比如带宽是R=100Mbps，传输L比特的时延是L/R</p>
+</li>
+<li>
+<p>传播时延</p>
+<p>比特在链路上传播所需要的时间，取决于物理媒体（光线或者、双胶铜线等）和传输距离。</p>
+</li>
+</ul>
+<p><strong>以上就是节点到节点之间的时延，端到端的时延就是所有节点间时延的总和</strong></p>
+<h1 id="吞吐量">吞吐量</h1>
+<p>吞吐量就是从端系统之间数据传输的速度。比如端系统接收L比特的数据用去了T秒，那么吞吐量就是L/T bps。</p>
+<p><strong>两个端系统之间常常要经过多个路由器，吞吐量的上限取决于整个路程中，吞吐量最低的那两个节点。</strong></p>
+<h1 id="协议分层">协议分层</h1>
+<div align="center">
+<p><img src="/network-layer.png" height="50%" width="50%"></img></p>
+</div>
+常见的分层模型有两种，5层模型和7层模型，后者只是把应用层更加细分了一下。
+<p><strong>对于程序员来说，底下的四层是比较固化的，大部分时候只需要考虑在传输层用tcp还是upd？在网络层用ipv4还是ipv6？链路层承载的最大载核是多少，我每次发送多少字节的数据才是最佳选择？</strong></p>
+<p>应用层的情况就多种多样了，甚至程序员很容易的定制自己的协议，因为它仅仅只是两个端系统上的应用沟通的语言，互相能够理解就是一种可行的协议。</p>
+<p>数据传输时，发送端从应用层开始，逐渐向下层传递，每一层对上一层传过来的数据加上本层的头部。最终在物理层通过以太网或者其他形式的网络接入发送出去。
+接收方正好相反，数据逐层向上传递，每一层打开属于本层的头部进行相应处理。</p>
+<p><strong>原则上不应该在某一层开不属于本层的数据报，NAT协议工作在网络层，负责网络地址转换，但是他却打开了传输层的报文查看端口号，这是关于NAT协议是否合理有争议的一点</strong></p>
+<div align="center">
+<p><img src="/network-data.png" height="50%" width="50%"></img></p>
+<blockquote>
+<p>一个完整的待发送的数据报文</p>
+</blockquote>
+</div>
+<p>下面介绍一下各个层次中的重点</p>
+<h2 id="应用层">应用层</h2>
+<p>应用层最常用的就是http协议了，它定义了web应用之间的通信语言。</p>
+<h3 id="http11和队头阻塞">http1.1和队头阻塞</h3>
+<p>http1.1是http协议的第一个标准版本。</p>
+<p>请求报文</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST /user HTTP/1.1                       // 请求行
+</span></span><span style="display:flex;"><span>Host: www.user.com
+</span></span><span style="display:flex;"><span>Content-Type: application/x-www-form-urlencoded
+</span></span><span style="display:flex;"><span>Connection: Keep-Alive
+</span></span><span style="display:flex;"><span>User-agent: Mozilla/5.0.                  // 以上是请求头
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hello world                               // 请求体
+</span></span></code></pre></div><p><strong>需要注意的是请求头中的Connection: Keep-Alive，目的是通知接收方不要关闭TCP连接，我接下来还有数据要发，可以复用同一个tcp连接。Connection: close，
+则正好相反，意在通知对方把连接关了吧。</strong></p>
+<p>响应报文</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK                           // 响应行
+</span></span><span style="display:flex;"><span>Connection: close                   
+</span></span><span style="display:flex;"><span>Content-Encoding: gzip
+</span></span><span style="display:flex;"><span>Content-Type: text/html
+</span></span><span style="display:flex;"><span>Transfer-Encoding: chunked                // 以上是响应头
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;!DOCTYPE html&gt;                           // 响应体
+</span></span><span style="display:flex;"><span>&lt;!--STATUS OK--&gt;
+</span></span></code></pre></div><p><strong>在http1.1版本中，传输层用的是tcp协议，每一个tcp连接中，可以进行多次http请求，但是下一个请求必须等到上一个请求得到响应才能发出，这样往往会把问题扩大。这种情况叫做http队头阻塞。</strong></p>
+<p><strong>http1.1之所以要等待收到响应才能发下一个请求，是因为如果不这样，它无法确定哪个响应对应哪个请求</strong></p>
+<p>那么我多弄几个连接不就可以了吗？</p>
+<p>确实可以解决这个问题，但是会引入新的问题，比如连接增多负载就会增高。所以浏览器都会对连接数上限有限制，比如chrome允许最多同时6个连接。</p>
+<p>这个问题在http2.0中才彻底解决。</p>
+<h3 id="http20">http2.0</h3>
+<p>http2.0在语义上完全兼容http1.1，它改变的是传输层面的逻辑，提升性能。<strong>同时http2对报文进行了哈夫曼编码，相比于ascii码，可以用少的0和1表示相同的数据。</strong></p>
+<p>编码是它提升性能的方式之一，因为减少了数据传输总量。另一个方式就是通过解决上面提到的问题，队头阻塞。</p>
+<p>编码后的http2报文长这样子。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>+-----------------------------------------------+
+</span></span><span style="display:flex;"><span>|                 Length <span style="color:#f92672">(</span>24<span style="color:#f92672">)</span>                   |
+</span></span><span style="display:flex;"><span>+---------------+---------------+---------------+
+</span></span><span style="display:flex;"><span>|   Type <span style="color:#f92672">(</span>8<span style="color:#f92672">)</span>    |   Flags <span style="color:#f92672">(</span>8<span style="color:#f92672">)</span>   |
+</span></span><span style="display:flex;"><span>+-+-------------+---------------+-------------------------------+
+</span></span><span style="display:flex;"><span>|R|                 Stream Identifier <span style="color:#f92672">(</span>31<span style="color:#f92672">)</span>                      |
+</span></span><span style="display:flex;"><span>+<span style="color:#f92672">=</span>+<span style="color:#f92672">=============================================================</span>+
+</span></span><span style="display:flex;"><span>|                   Frame Payload <span style="color:#f92672">(</span>0...<span style="color:#f92672">)</span>                      ...
+</span></span><span style="display:flex;"><span>+---------------------------------------------------------------+
+</span></span></code></pre></div><p>其中Stream Identifier叫做流标识符，它作为http2连接内唯一的id标识，通过这个值绑定了响应和请求1对1的关系。</p>
+<h3 id="http3">http3</h3>
+<p>至此，http2已经很好的解决了应用层面的问题了，实际上http3的推出，是为了解决传输层的问题。</p>
+<p>http1.1和http2.0都是基于tcp协议的。tcp在传输层面上为了保证可靠，采取了重传，排序，拥塞控制，流量控制的策略，实现这些策略对性能是有牺牲的。
+http3就舍弃了tcp，使用upd作为载体，udp没有这些保障，更单纯的传输数据，所以速度更快。这就要求应用必须自己保证可靠性了。
+所以http3在udp上使用了<strong>quic协议，用更高效的方式做tcp应该做的这些事。</strong> 这里就不过多展开了。</p>
+<h2 id="传输层">传输层</h2>
+<p>传输层最常见的两个协议是tcp和udp。</p>
+<h3 id="tcp">tcp</h3>
+<div align="center">
+<p><img src="/tcp-data.png" height="50%" width="50%"></img></p>
+<blockquote>
+<p>tcp报文</p>
+</blockquote>
+</div>
+<p>首先其中的数据部分就是应用层交下来的完整的内容。</p>
+<p>使用tcp协议在真正的业务通信之前，首先要建立连接。<strong>所谓的建立连接并不是在端系统之间搭个桥，只是在双方端系统之间，创建出用于管理通信的数据结构。真的搭个桥的，那应该是昂贵的电路交换把。</strong></p>
+<p>怎么建立连接的呢，通过三次握手，三次握手之后，双方的端系统里就有了一个四元组。</p>
+<table>
+<thead>
+<tr>
+<th>socket</th>
+<th>源ip</th>
+<th>源端口</th>
+<th>目标ip</th>
+<th>目标端口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>30.99.22.1</td>
+<td>443</td>
+<td>22.22.11.22</td>
+<td>33377</td>
+</tr>
+</tbody>
+</table>
+<p>之后双放进程只需要知道socket是哪个就够了。</p>
+<p>除此之外tcp报文中还有一个窗口大小，这个是用来做<strong>流量控制</strong>和<strong>拥塞控制</strong>的。</p>
+<p>当接收端接收的慢，发送方发的快，接收方就会通过这个窗口通知发送方慢一点。<strong>因为此时发再快也没有意义，还会占用核心网络资源，弄不好还会增加排队时间。</strong></p>
+<p>当核心网络拥堵时，也会通过这个窗口来通知发送方慢一点。<strong>避免长时间排队，甚至队列满了还会丢包。</strong></p>
+<p>tcp是怎么保证对方一定能收到的？</p>
+<p>tcp报文中有一个确认号，接收方对每一个收到的报文都会发送响应的应答包给发送方。<strong>所以，只要超过了约定的时间还没收到应答，我就重发。</strong></p>
+<p>最后通信完断开链接，还要经过四次挥手，这个不展开了。</p>
+<h3 id="upd">upd</h3>
+<p>udp在传输层上只做了一件事，就是校验数据宝是否完整（tcp也做了这件事）。其他的都没有，所以也不需要挥手，也不需要握手，所以数据包被路由器扔了他也不会重传。
+适用于即时丢一些数据包也没关系的场景，但是速度要快。比如多媒体的传输。</p>
+<h2 id="网络层">网络层</h2>
+<p>数据传输过程中，传输路线是什么样的，我该先走哪个路由器再走哪个，这是网络层的工作。</p>
+<p>每个路由器内都有一个路由表，它定义了目的ip与出口的映射关系。需要注意的是，<strong>这个映射关系是按照子网的网络号匹配的。</strong></p>
+<p>每个ip地址分成2个部分，比如192.168.1.1/24代表前24位是网络号，最后8位是主机号，路由器只需要交给正确的子网就可以了，这样可以减少路由表的长度。</p>
+<h3 id="ipv4与ipv6">ipv4与ipv6</h3>
+<p>上面介绍的192.168.1.1/24就是ipv4的地址。因为地址数量不够用了，所以ipv6出现了，ipv6的长度是128位，再用十进制表示就太长了，所以用了16进制或者0压缩法表示。</p>
+<p>除了这个，<strong>ipv6是不允许分片的，这就要求上层要把控好数据传输的大小。</strong> 什么是分片会在下面的链路层介绍。</p>
+<h3 id="怎么从ipv4过度到ipv6">怎么从ipv4过度到ipv6？</h3>
+<p>现在，全球绝大部分的路由设备都是按照的ipv4协议进行路由转发，两个设备必须使用相同的协议才能对话，ipv4和ipv6是无法对话的。由于数量太多，不可能一下子让所有路由设备都升级成ipv6。
+所以只能在一个小的子网内部先用ipv6，对于这个子网的出口，他的外界全是ipv4，所以在出口处，<strong>我们在ipv6的报文上再套上一层ipv4的头部，</strong> 这样便能再核心网络中传播了。
+等到这样的子网越来越多，最终整个核心网络都是ipv6的子网，那就可以彻底和ipv4说再见了👋。</p>
+<h2 id="链路层">链路层</h2>
+<p>链路层定义了连个节点之间该怎么传数据。</p>
+<p>首先链路层是可靠的，<strong>但是这里的可靠和tcp的可靠不是一回事，链路层保证的是我从这一个节点一定准确传到了下一个节点，否则就重传。至于被路由器扔了，那我是不管的
+，我已经准确传过去了，路由器扔了那是网络层的事。</strong></p>
+<p>另一个关键点是mtu，mtu定义了链路层载荷的大小，也就是网络层头+传输层头+应用层数据的大小，超过了这个大小就要分片传输了。</p>
+<p>所以一个程序优化的关键点是，<strong>尽量在一个mtu的大小内完成更多的业务目的。</strong></p>
+<p>另外，每个路由器的mtu都可能不同，一次数据传输可能要经历多个路由器，所以<strong>找出整个链路最小mtu是另一个关键点。</strong></p>
+<h2 id="物理层">物理层</h2>
+<p>从软件开发的角度来说，物理层会接触的很少，还有把有限的精力放在更常用的事情上吧。😄</p>
+<h1 id="总结">总结</h1>
+<p>以上就是对数据在计算机网络中传输的一个概括，还有很多细节并没有提到，比如拥塞控制的算法，tcp的慢启动，路由算法，广播风暴等等，需要你自行去探索了。</p>
+<p>但是先有一个框架是很好的，因为每一层网络都是环环相扣，<strong>不对整体有所了解，就不可能真正掌握局部。</strong></p></section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="/tags/network"
+      >network</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/post/posts/alignment-data/"
+      ><span class="mr-1.5">←</span><span>如何避免数据对齐造成的内存浪费？</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/post/posts/mysql0x3/"
+      ><span>mysql.0x3--schema、数据类型优化</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="/">Paper</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

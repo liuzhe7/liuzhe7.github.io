@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>network on Paper</title>
+    <link>/tags/network/</link>
+    <description>Recent content in network on Paper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 19 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNS解析错了、不够智能、解析慢该怎么解决？</title>
+      <link>/post/posts/dns/</link>
+      <pubDate>Mon, 19 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/dns/</guid>
+      <description>&lt;p&gt;dns是用来解析域名的，&lt;strong&gt;在传输层依托于udp&lt;/strong&gt;，客户端提交一个域名，dns返回一个合理的ip地址。然而这个过程并不总是一帆风顺的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>grpc</title>
+      <link>/post/posts/grpc/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/grpc/</guid>
+      <description>&lt;p&gt;本文简单介绍grpc的作用和原理，然后介绍一些实用的功能，帮你构建一个安全高效的grpc服务。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>网络安全应该从哪几个方面考虑？</title>
+      <link>/post/posts/cyber-security/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/cyber-security/</guid>
+      <description>&lt;p&gt;在网络通信的过程中，从攻击者的角度来说，他可以窃听你们传输的数据，也可以修改，插入，删除（后面统称为篡改）传输数据。也可以发起大量的无意义的访问请求，增加服务器负载。
+本文将介绍这些问题的解决思路。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>计算机网络漫游</title>
+      <link>/post/posts/network/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/network/</guid>
+      <description>&lt;p&gt;当两个设备要通信时，计算机网络就被发明出来了。本文将梳理出网络通信的主要逻辑。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

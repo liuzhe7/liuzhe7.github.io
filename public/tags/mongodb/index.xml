@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mongoDB on Paper</title>
+    <link>/tags/mongodb/</link>
+    <description>Recent content in mongoDB on Paper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 17 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mongoDB核心概念</title>
+      <link>/post/posts/mongodb/</link>
+      <pubDate>Fri, 17 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/mongodb/</guid>
+      <description>&lt;p&gt;本文将从开发者的角度，介绍 mongoDB 中最重要的特性。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

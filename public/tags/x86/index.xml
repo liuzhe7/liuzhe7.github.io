@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>x86 on Paper</title>
+    <link>/tags/x86/</link>
+    <description>Recent content in x86 on Paper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
+    <lastBuildDate>Sat, 09 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/x86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据实验-深入理解计算机系统</title>
+      <link>/post/posts/data-lab/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/data-lab/</guid>
+      <description>&lt;p&gt;这是我关于深入理解计算机系统这本书配套实验之一数据实验的实现思路，所有代码都在linux/x86上验证过是可行的，但不保证是最优解。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
