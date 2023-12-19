@@ -10,19 +10,19 @@
     <lastBuildDate>Mon, 26 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>尾递归优化</title>
-      <link>/post/posts/recursive-function/</link>
+      <link>/posts/recursive-function/</link>
       <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
       
-      <guid>/post/posts/recursive-function/</guid>
+      <guid>/posts/recursive-function/</guid>
       <description>&lt;p&gt;递归是指函数会调用自己的情况，函数调用到返回到过程中都可能会在栈和寄存器中创建销毁数据，并且栈内存也存在被耗尽的风险，尾递归优化通过减少这种创建与销毁来来解决这两个问题。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>数据实验-深入理解计算机系统</title>
-      <link>/post/posts/data-lab/</link>
+      <link>/posts/data-lab/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/posts/data-lab/</guid>
+      <guid>/posts/data-lab/</guid>
       <description>&lt;p&gt;这是我关于深入理解计算机系统这本书配套实验之一数据实验的实现思路，所有代码都在linux/x86上验证过是可行的，但不保证是最优解。&lt;/p&gt;</description>
     </item>
     

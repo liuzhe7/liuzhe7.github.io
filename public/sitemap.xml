@@ -8,13 +8,10 @@
     <loc>/tags/golang/</loc>
     <lastmod>2023-11-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/golang-unit-test/</loc>
+    <loc>/posts/golang-unit-test/</loc>
     <lastmod>2023-11-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/</loc>
-    <lastmod>2023-11-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/post/posts/</loc>
+    <loc>/posts/</loc>
     <lastmod>2023-11-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
@@ -29,7 +26,7 @@
     <loc>/tags/c/</loc>
     <lastmod>2023-06-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/recursive-function/</loc>
+    <loc>/posts/recursive-function/</loc>
     <lastmod>2023-06-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/database/</loc>
@@ -38,13 +35,13 @@
     <loc>/tags/mongodb/</loc>
     <lastmod>2023-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/mongodb/</loc>
+    <loc>/posts/mongodb/</loc>
     <lastmod>2023-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/dns/</loc>
     <lastmod>2022-09-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/dns/</loc>
+    <loc>/posts/dns/</loc>
     <lastmod>2022-09-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/network/</loc>
@@ -56,13 +53,13 @@
     <loc>/tags/kubernetes/</loc>
     <lastmod>2022-02-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/kubernetes-programming/</loc>
+    <loc>/posts/kubernetes-programming/</loc>
     <lastmod>2022-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/grpc/</loc>
     <lastmod>2021-11-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/grpc/</loc>
+    <loc>/posts/grpc/</loc>
     <lastmod>2021-11-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/rpc/</loc>
@@ -74,10 +71,10 @@
     <loc>/tags/cyber-security/</loc>
     <lastmod>2021-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/cyber-security/</loc>
+    <loc>/posts/cyber-security/</loc>
     <lastmod>2021-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/go-program/</loc>
+    <loc>/posts/go-program/</loc>
     <lastmod>2020-07-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/cache/</loc>
@@ -86,34 +83,34 @@
     <loc>/tags/cpu/</loc>
     <lastmod>2020-05-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/cpu-cache/</loc>
+    <loc>/posts/cpu-cache/</loc>
     <lastmod>2020-05-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/computer-system/</loc>
     <lastmod>2020-04-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/alignment-data/</loc>
+    <loc>/posts/alignment-data/</loc>
     <lastmod>2020-04-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/network/</loc>
+    <loc>/posts/network/</loc>
     <lastmod>2020-04-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/mysql/</loc>
     <lastmod>2020-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/mysql0x3/</loc>
+    <loc>/posts/mysql0x3/</loc>
     <lastmod>2020-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/mysql0x2/</loc>
+    <loc>/posts/mysql0x2/</loc>
     <lastmod>2020-02-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/data-structure/</loc>
     <lastmod>2020-02-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/mysql0x1/</loc>
+    <loc>/posts/mysql0x1/</loc>
     <lastmod>2020-02-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/mysql0x0/</loc>
+    <loc>/posts/mysql0x0/</loc>
     <lastmod>2020-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/archives/</loc>
@@ -125,7 +122,7 @@
     <loc>/tags/x86/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/posts/data-lab/</loc>
+    <loc>/posts/data-lab/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/about/</loc>

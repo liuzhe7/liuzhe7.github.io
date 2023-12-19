@@ -10,37 +10,37 @@
     <lastBuildDate>Mon, 02 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>mysql.0x3--schema、数据类型优化</title>
-      <link>/post/posts/mysql0x3/</link>
+      <link>/posts/mysql0x3/</link>
       <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/posts/mysql0x3/</guid>
+      <guid>/posts/mysql0x3/</guid>
       <description>&lt;p&gt;表该怎么设计？该使用什么样的数据类型？这是开发人员最需要掌握的数据库知识之一了。本文将介绍这方面的设计原则和使用技巧。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>mysql.0x2--日志、事务、锁</title>
-      <link>/post/posts/mysql0x2/</link>
+      <link>/posts/mysql0x2/</link>
       <pubDate>Tue, 25 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/posts/mysql0x2/</guid>
+      <guid>/posts/mysql0x2/</guid>
       <description>&lt;p&gt;索引的意义总结为一句话就是为了提高查询性能。但是一个出色的产品光有性能是不够的，必须还能稳定安全的工作，本文介绍的内容关乎mysql的稳定和安全。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>mysql.0x1--二叉树、二叉查找树、红黑树、B&#43;树、索引</title>
-      <link>/post/posts/mysql0x1/</link>
+      <link>/posts/mysql0x1/</link>
       <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/posts/mysql0x1/</guid>
+      <guid>/posts/mysql0x1/</guid>
       <description>&lt;p&gt;学习一个数据库，最重要的是学习它的数据模型。InnoDB的索引模型是B+树结构的，本文将从最基础的二叉树开始，循序渐进的介绍到B+树。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>mysql.0x0--鸟瞰mysql</title>
-      <link>/post/posts/mysql0x0/</link>
+      <link>/posts/mysql0x0/</link>
       <pubDate>Wed, 19 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/posts/mysql0x0/</guid>
+      <guid>/posts/mysql0x0/</guid>
       <description>&lt;p&gt;跟着丁奇学了几个月mysql，收获了很多实用的知识，在此结合我工作中的一些实践，分多篇文章做一下总结。&lt;/p&gt;</description>
     </item>
     
