@@ -12,7 +12,7 @@ ignoreErrors = ["error-remote-getjson"]
 
 # ------------------------------
 theme = "paper"
-title = "log myself"
+title = "🥴"
 
 [params]
   color = 'linen'
@@ -20,7 +20,7 @@ title = "log myself"
   github = 'liuzhe7'
 
   name = 'Liu Zhe'
-  bio = '😊'
+  bio = '🤩'
 # ------------------------------
 
 # needed to  render raw HTML (e.g. <sub>, <sup>, <kbd>, <mark>)
