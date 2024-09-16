@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cache on 🐶</title>
+    <link>/tags/cache/</link>
+    <description>Recent content in cache on 🐶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/cache/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何写出充分利用cpu缓存的代码？</title>
+      <link>/posts/cpu-cache/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/cpu-cache/</guid>
+      <description>&lt;p&gt;现代cpu通常有l1、l2、l3级别的缓存。这些设备使用了SRAM这种存储技术，相比主存使用的DRAM，SRAM的读写速度都要快得多。所以把主存的数据缓存到cpu-cache中，
+让cpu尽量的去读写cpu-cache去完成整个程序，会大幅度提升执行效率。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

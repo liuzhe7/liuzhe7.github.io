@@ -1,0 +1,419 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>如何避免数据对齐造成的内存浪费？ - Paper</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="许多计算机系统对基本数据类型的合法地址做出了一些限制，要求某种类型对象的地址必须是某个值的K(通常是2、4、8)的倍数。这种对齐限制简化了形成处理器和内存系统之间接口的硬件设计。
+假设处理器总是从内存读取8字节，某数据的地址对齐8的倍数，可以总是一个内存操作就读或写该数据。否则，可能执行两次内存访问，因为对象可能被分放在两个8字节内存块中。" />
+  <meta name="author" content="Liu Zhe" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  
+  
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.104.3" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="如何避免数据对齐造成的内存浪费？">
+<meta itemprop="description" content="许多计算机系统对基本数据类型的合法地址做出了一些限制，要求某种类型对象的地址必须是某个值的K(通常是2、4、8)的倍数。这种对齐限制简化了形成处理器和内存系统之间接口的硬件设计。
+假设处理器总是从内存读取8字节，某数据的地址对齐8的倍数，可以总是一个内存操作就读或写该数据。否则，可能执行两次内存访问，因为对象可能被分放在两个8字节内存块中。"><meta itemprop="datePublished" content="2020-04-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-04-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="140">
+<meta itemprop="keywords" content="golang,computer-system," />
+  
+  <meta property="og:title" content="如何避免数据对齐造成的内存浪费？" />
+<meta property="og:description" content="许多计算机系统对基本数据类型的合法地址做出了一些限制，要求某种类型对象的地址必须是某个值的K(通常是2、4、8)的倍数。这种对齐限制简化了形成处理器和内存系统之间接口的硬件设计。
+假设处理器总是从内存读取8字节，某数据的地址对齐8的倍数，可以总是一个内存操作就读或写该数据。否则，可能执行两次内存访问，因为对象可能被分放在两个8字节内存块中。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/posts/alignment-data/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-04-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-12T00:00:00+00:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何避免数据对齐造成的内存浪费？"/>
+<meta name="twitter:description" content="许多计算机系统对基本数据类型的合法地址做出了一些限制，要求某种类型对象的地址必须是某个值的K(通常是2、4、8)的倍数。这种对齐限制简化了形成处理器和内存系统之间接口的硬件设计。
+假设处理器总是从内存读取8字节，某数据的地址对齐8的倍数，可以总是一个内存操作就读或写该数据。否则，可能执行两次内存访问，因为对象可能被分放在两个8字节内存块中。"/>
+
+  
+  
+  
+  <link rel="canonical" href="/post/posts/alignment-data/" />
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="/"
+      >Paper</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/liuzhe7"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">如何避免数据对齐造成的内存浪费？</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Apr 12, 2020</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>许多计算机系统对基本数据类型的合法地址做出了一些限制，要求某种类型对象的地址必须是某个值的K(通常是2、4、8)的倍数。这种对齐限制简化了形成处理器和内存系统之间接口的硬件设计。
+假设处理器总是从内存读取8字节，某数据的地址对齐8的倍数，可以总是一个内存操作就读或写该数据。否则，可能执行两次内存访问，因为对象可能被分放在两个8字节内存块中。</p>
+<h1 id="golang中的数据对齐">golang中的数据对齐</h1>
+<p>go语言中数据对齐需要同时满足两个条件</p>
+<ul>
+<li>
+<p>成员对齐</p>
+<p>基础类型变量x的起始地址需要是unsafe.AlignOf(x)的倍数</p>
+</li>
+<li>
+<p>整体对齐</p>
+<p>结构体类型变量s，整体内存占用需要是unsafe.AlignOf(s)的倍数</p>
+</li>
+</ul>
+<h1 id="写代码时需要注意什么">写代码时需要注意什么？</h1>
+<p>通过一段golang程序来展示一下内存对齐时的内存占用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;unsafe&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ints</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i1</span> <span style="color:#66d9ef">int32</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i2</span> <span style="color:#66d9ef">int8</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i3</span> <span style="color:#66d9ef">int32</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i4</span> <span style="color:#66d9ef">int8</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i5</span> [<span style="color:#ae81ff">10</span>]<span style="color:#66d9ef">int8</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ints</span>{}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Alignof:%T, %d\n&#34;</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Alignof</span>(<span style="color:#a6e22e">i</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Sizeof:%T, %d\n&#34;</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Sizeof</span>(<span style="color:#a6e22e">i</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;i1-Offsetof: %d, i1-Alignof: %d\n&#34;</span>, <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Offsetof</span>(<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">i1</span>), <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Alignof</span>(<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">i1</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;i2-Offsetof: %d, i2-Alignof: %d\n&#34;</span>, <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Offsetof</span>(<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">i2</span>), <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Alignof</span>(<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">i2</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;i3-Offsetof: %d, i3-Alignof: %d\n&#34;</span>, <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Offsetof</span>(<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">i3</span>), <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Alignof</span>(<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">i3</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;i4-Offsetof: %d, i4-Alignof: %d\n&#34;</span>, <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Offsetof</span>(<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">i4</span>), <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Alignof</span>(<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">i4</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;i5-Offsetof: %d, i5-Alignof: %d\n&#34;</span>, <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Offsetof</span>(<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">i5</span>), <span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Alignof</span>(<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">i5</span>))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>执行该程序会输出</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Alignof:main.ints, <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>Sizeof:main.ints, <span style="color:#ae81ff">24</span>
+</span></span><span style="display:flex;"><span>i1-Offsetof: 0, i1-Alignof: <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>i2-Offsetof: 4, i2-Alignof: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>i3-Offsetof: 8, i3-Alignof: <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>i4-Offsetof: 12, i4-Alignof: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>i5-Offsetof: 13, i5-Alignof: <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>这表示一个ints结构体占用了24个字节。i2本应该只占1字节，为了使i3满足与4对齐，需要在i2后面用3个字节占位。对于最后的int8数组，我们可以把它看成内存中一串连续的
+int8，所以需要和1字节对齐，任意起始地址都满足对齐1。i5本身占用10个字节，最后还需要补1字节使整体占用24字节以满足整体对齐规则。</p>
+<h1 id="golang中怎么节约结构体内存">golang中怎么节约结构体内存？</h1>
+<p>通过上面的例子，可以猜到，节约内存就是减少占位的情况，还是刚才那个例子，如果我们把int32类型提前</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ints</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i1</span> <span style="color:#66d9ef">int32</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i2</span> <span style="color:#66d9ef">int32</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i3</span> <span style="color:#66d9ef">int8</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i4</span> <span style="color:#66d9ef">int8</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i5</span> [<span style="color:#ae81ff">10</span>]<span style="color:#66d9ef">int8</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这样的话就能避免了i2的补位，节约3个字节。同时自然满足了整体对齐，不需要再额外补一位，一共只需要20字节。</p>
+<p><strong>在结构体中，把内存占用大的数据类型放在前面，总是一个不错的选择</strong></p>
+<h1 id="特殊的空结构体">特殊的空结构体</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ints</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">i1</span> <span style="color:#66d9ef">int8</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">s1</span> <span style="color:#66d9ef">struct</span>{}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>对于这个结构体，我们期望的是i1占1字节，s1占0字节，整体占1字节，并且满足了上面提到的数据对齐规则。但是实际上他占用了2字节。</p>
+<p>对于这个问题，在<a href="https://github.com/golang/go/issues/38194">github</a>上有人给出了回答。</p>
+<p>总结来说是为了s1是一个合法地址，所以给他分配了内存，不至于访问s1的时候超出了该结构体的地址范围，所以我们<strong>最好避免把空结构体放在最后</strong></p>
+<h1 id="总结">总结</h1>
+<ul>
+<li>内存对齐是为了让cpu能够只需一次内存访问就读取或写入目标数据</li>
+<li>对于go程序，在结构体中，把内存占用大的数据类型放在前面，总是一个不错的选择</li>
+<li>对于go程序，最好避免把空结构体放在最后</li>
+</ul></section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="/tags/golang"
+      >golang</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="/tags/computer-system"
+      >computer-system</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/post/posts/cpu-cache/"
+      ><span class="mr-1.5">←</span><span>如何写出充分利用cpu缓存的代码？</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/post/posts/network/"
+      ><span>计算机网络漫游</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="/">Paper</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

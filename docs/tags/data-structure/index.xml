@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>data-structure on 🐶</title>
+    <link>/tags/data-structure/</link>
+    <description>Recent content in data-structure on 🐶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 23 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/data-structure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mysql.0x1--二叉树、二叉查找树、红黑树、B&#43;树、索引</title>
+      <link>/posts/mysql0x1/</link>
+      <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/mysql0x1/</guid>
+      <description>&lt;p&gt;学习一个数据库，最重要的是学习它的数据模型。InnoDB的索引模型是B+树结构的，本文将从最基础的二叉树开始，循序渐进的介绍到B+树。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

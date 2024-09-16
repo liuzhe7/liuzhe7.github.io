@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Paper</title>
+    <link>/post/posts/</link>
+    <description>Recent content in Posts on Paper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 10 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="/post/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>golang UT enhance</title>
+      <link>/post/posts/golang-unit-test/</link>
+      <pubDate>Fri, 10 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/golang-unit-test/</guid>
+      <description>&lt;p&gt;The unit test code may fail when it&amp;rsquo;s calling a remote service, then we can&amp;rsquo;t write a test function to cover it. there are some ways we can use to avoid the failing.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>尾递归优化</title>
+      <link>/post/posts/recursive-function/</link>
+      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/recursive-function/</guid>
+      <description>&lt;p&gt;递归是指函数会调用自己的情况，函数调用到返回到过程中都可能会在栈和寄存器中创建销毁数据，并且栈内存也存在被耗尽的风险，尾递归优化通过减少这种创建与销毁来来解决这两个问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>mongoDB核心概念</title>
+      <link>/post/posts/mongodb/</link>
+      <pubDate>Fri, 17 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/mongodb/</guid>
+      <description>&lt;p&gt;本文将从开发者的角度，介绍 mongoDB 中最重要的特性。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>DNS解析错了、不够智能、解析慢该怎么解决？</title>
+      <link>/post/posts/dns/</link>
+      <pubDate>Mon, 19 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/dns/</guid>
+      <description>&lt;p&gt;dns是用来解析域名的，&lt;strong&gt;在传输层依托于udp&lt;/strong&gt;，客户端提交一个域名，dns返回一个合理的ip地址。然而这个过程并不总是一帆风顺的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>怎么开发云原生应用？</title>
+      <link>/post/posts/kubernetes-programming/</link>
+      <pubDate>Sat, 19 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/kubernetes-programming/</guid>
+      <description>&lt;p&gt;如果你想让你的应用充分利用kubernetes提供的能力，本文将提供一些思路和代码示例。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>grpc</title>
+      <link>/post/posts/grpc/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/grpc/</guid>
+      <description>&lt;p&gt;本文简单介绍grpc的作用和原理，然后介绍一些实用的功能，帮你构建一个安全高效的grpc服务。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>网络安全应该从哪几个方面考虑？</title>
+      <link>/post/posts/cyber-security/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/cyber-security/</guid>
+      <description>&lt;p&gt;在网络通信的过程中，从攻击者的角度来说，他可以窃听你们传输的数据，也可以修改，插入，删除（后面统称为篡改）传输数据。也可以发起大量的无意义的访问请求，增加服务器负载。
+本文将介绍这些问题的解决思路。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>golang programming tips</title>
+      <link>/post/posts/go-program/</link>
+      <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/go-program/</guid>
+      <description>&lt;p&gt;本文将整理总结构建go程序时的技巧和需要注意的点，持续更新&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>如何写出充分利用cpu缓存的代码？</title>
+      <link>/post/posts/cpu-cache/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/cpu-cache/</guid>
+      <description>&lt;p&gt;现代cpu通常有l1、l2、l3级别的缓存。这些设备使用了SRAM这种存储技术，相比主存使用的DRAM，SRAM的读写速度都要快得多。所以把主存的数据缓存到cpu-cache中，
+让cpu尽量的去读写cpu-cache去完成整个程序，会大幅度提升执行效率。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>如何避免数据对齐造成的内存浪费？</title>
+      <link>/post/posts/alignment-data/</link>
+      <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/alignment-data/</guid>
+      <description>&lt;p&gt;许多计算机系统对基本数据类型的合法地址做出了一些限制，要求某种类型对象的地址必须是某个值的K(通常是2、4、8)的倍数。这种对齐限制简化了形成处理器和内存系统之间接口的硬件设计。
+假设处理器总是从内存读取8字节，某数据的地址对齐8的倍数，可以总是一个内存操作就读或写该数据。否则，可能执行两次内存访问，因为对象可能被分放在两个8字节内存块中。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>计算机网络漫游</title>
+      <link>/post/posts/network/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/network/</guid>
+      <description>&lt;p&gt;当两个设备要通信时，计算机网络就被发明出来了。本文将梳理出网络通信的主要逻辑。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>mysql.0x3--schema、数据类型优化</title>
+      <link>/post/posts/mysql0x3/</link>
+      <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/mysql0x3/</guid>
+      <description>&lt;p&gt;表该怎么设计？该使用什么样的数据类型？这是开发人员最需要掌握的数据库知识之一了。本文将介绍这方面的设计原则和使用技巧。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>mysql.0x2--日志、事务、锁</title>
+      <link>/post/posts/mysql0x2/</link>
+      <pubDate>Tue, 25 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/mysql0x2/</guid>
+      <description>&lt;p&gt;索引的意义总结为一句话就是为了提高查询性能。但是一个出色的产品光有性能是不够的，必须还能稳定安全的工作，本文介绍的内容关乎mysql的稳定和安全。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>mysql.0x1--二叉树、二叉查找树、红黑树、B&#43;树、索引</title>
+      <link>/post/posts/mysql0x1/</link>
+      <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/mysql0x1/</guid>
+      <description>&lt;p&gt;学习一个数据库，最重要的是学习它的数据模型。InnoDB的索引模型是B+树结构的，本文将从最基础的二叉树开始，循序渐进的介绍到B+树。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>mysql.0x0--鸟瞰mysql</title>
+      <link>/post/posts/mysql0x0/</link>
+      <pubDate>Wed, 19 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/mysql0x0/</guid>
+      <description>&lt;p&gt;跟着丁奇学了几个月mysql，收获了很多实用的知识，在此结合我工作中的一些实践，分多篇文章做一下总结。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据实验-深入理解计算机系统</title>
+      <link>/post/posts/data-lab/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/posts/data-lab/</guid>
+      <description>&lt;p&gt;这是我关于深入理解计算机系统这本书配套实验之一数据实验的实现思路，所有代码都在linux/x86上验证过是可行的，但不保证是最优解。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

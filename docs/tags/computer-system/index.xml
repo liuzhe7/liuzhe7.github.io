@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>computer-system on 🐶</title>
+    <link>/tags/computer-system/</link>
+    <description>Recent content in computer-system on 🐶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 12 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/computer-system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何避免数据对齐造成的内存浪费？</title>
+      <link>/posts/alignment-data/</link>
+      <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/alignment-data/</guid>
+      <description>&lt;p&gt;许多计算机系统对基本数据类型的合法地址做出了一些限制，要求某种类型对象的地址必须是某个值的K(通常是2、4、8)的倍数。这种对齐限制简化了形成处理器和内存系统之间接口的硬件设计。
+假设处理器总是从内存读取8字节，某数据的地址对齐8的倍数，可以总是一个内存操作就读或写该数据。否则，可能执行两次内存访问，因为对象可能被分放在两个8字节内存块中。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,434 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>DNS解析错了、不够智能、解析慢该怎么解决？ - 🐶</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="dns是用来解析域名的，在传输层依托于udp，客户端提交一个域名，dns返回一个合理的ip地址。然而这个过程并不总是一帆风顺的。" />
+  <meta name="author" content="Liu Zhe" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  
+  
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.104.3" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="DNS解析错了、不够智能、解析慢该怎么解决？">
+<meta itemprop="description" content="dns是用来解析域名的，在传输层依托于udp，客户端提交一个域名，dns返回一个合理的ip地址。然而这个过程并不总是一帆风顺的。"><meta itemprop="datePublished" content="2022-09-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-09-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="64">
+<meta itemprop="keywords" content="dns,network," />
+  
+  <meta property="og:title" content="DNS解析错了、不够智能、解析慢该怎么解决？" />
+<meta property="og:description" content="dns是用来解析域名的，在传输层依托于udp，客户端提交一个域名，dns返回一个合理的ip地址。然而这个过程并不总是一帆风顺的。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/dns/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-19T00:00:00+00:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DNS解析错了、不够智能、解析慢该怎么解决？"/>
+<meta name="twitter:description" content="dns是用来解析域名的，在传输层依托于udp，客户端提交一个域名，dns返回一个合理的ip地址。然而这个过程并不总是一帆风顺的。"/>
+
+  
+  
+  
+  <link rel="canonical" href="/posts/dns/" />
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="/"
+      >🐶</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/liuzhe7"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">DNS解析错了、不够智能、解析慢该怎么解决？</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Sep 19, 2022</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>dns是用来解析域名的，<strong>在传输层依托于udp</strong>，客户端提交一个域名，dns返回一个合理的ip地址。然而这个过程并不总是一帆风顺的。</p>
+<h1 id="dns有什么作用">DNS有什么作用？</h1>
+<p>首先简要的梳理一下dns的工作流程，这帮助我们更容易理解为什么会有上面三个问题。</p>
+<p>我们通过一个案例，来看一下整个dns解析的流程。</p>
+<ul>
+<li>用户访问某个域名www.xxx.com，首先查看本地/etc/hosts文件是否记录了该域名对应的ip地址，如果有直接返回，解析结束。</li>
+<li>/etc/hosts没有缓存，这时候会请求用户所在运营商的dns服务器查询，同样的，如果这个服务器有缓存，直接返回，解析结束。</li>
+<li>运营商dns服务没有缓存，<strong>运营商dns服务器</strong>要访问根DNS服务器了，这个服务器在全球有13个，主要在北美地区，根服务器发现顶级域名是com，就返回一个顶级dns服务器的ip地址。</li>
+<li><strong>运营商dns服务器</strong>拿到顶级dns服务器的ip地址，去访问顶级dns服务器，顶级dns服务器发现是xxx.com，应该由xxx.com的权威dns服务器负责解析，于是返回了权威dns服务器的ip地址。</li>
+<li><strong>运营商dns服务器</strong>拿到权威dns服务器的ip地址，去访问权威dns服务器，这个时候有不同的策略。
+<ul>
+<li>如果没有负载均衡策略，那么直接返回www.xxx.com对应的一个ip地址。</li>
+<li>如果有简单的负载均衡策略，那么www.xxx.com会对应一个ip列表，会根据相应的算法返回其中之一。</li>
+<li>如果有全局负载均衡策略，比如用户最终要访问的服务是跨地域，跨运营商多地区部署的服务，那么权威dns服务器会返回给运营商dns服务器一个别名，比如www.sh.xxx.com，并让他请求<strong>全局负载均衡器（GSLB，Global Server Load Balance）来解析这个域名</strong>。
+<ul>
+<li>运营商dns服务器会去GSLB询问www.sh.xxx.com的ip地址，然后又得到另一个别名www.yd.sh.xxx.com和另一个GSLB。</li>
+<li>最终在第二个GSLB上查询到了ip地址，并且这个ip地址和客户端在同一个运营商，地理位置相近。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div align="center">
+<p><img src="/dns.png" height="50%" width="50%"></img></p>
+<blockquote>
+<p>dns解析逻辑</p>
+</blockquote>
+</div>
+<p><strong>所以dns的作用可以总结为三点</strong></p>
+<ul>
+<li>查询域名对于的ip地址</li>
+<li>做简单的负载均衡</li>
+<li>做全局的负载均衡</li>
+</ul>
+<h1 id="存在的问题">存在的问题</h1>
+<p>考虑这些情况，可以把问题分为3类</p>
+<ul>
+<li>解析错误</li>
+<li>解析不够智能</li>
+<li>慢</li>
+</ul>
+<p>什么时候会解析错误？</p>
+<p>运营商dns缓存更新不及时，权威dns服务器ip地址已经变了，这时候就有可能拿到错误的ip地址了。</p>
+<p>什么时候解析不够智能？</p>
+<ul>
+<li>a运营商把dns解析的请求转发给b运营商，b运营商访问权威dns服务器，权威dns服务器认为客户端在b运营商的网络里，结果GSLB没给出最优解。</li>
+<li>经过出口NAT后，源IP地址发生变化，导致GSLB无法给出最优解。</li>
+</ul>
+<p>什么时候会慢？</p>
+<p>没有任何缓存，需要层层的去询问dns服务器的时候。</p>
+<h1 id="怎么解决">怎么解决？</h1>
+<p>以上问题都是在运营商dns服务器，根dns服务器，顶级dns服务器等等上的，一般公司没有权限去动这些服务器。
+<strong>所以没办法直接解决，那只好间接解决，就是不用它了，自己搭建dns服务器，部署在不同的运营商网络里</strong></p>
+<h1 id="httpdns">httpDNS</h1>
+<p>这是自建dns服务器的一种解决方案。基于http搭建的dns服务器，客户端使用特定的sdk，访问这个服务解析域名，代替运营商的dns服务。</p>
+<p>httpDNS是怎么解决上述问题的？</p>
+<p>解析错误怎么办？</p>
+<p>本质上是缓存过期、更新、不一致的问题，有两种常用的解决思路</p>
+<ul>
+<li>Cache-Aside
+客户端先读缓存，缓存不能用了读数据库，同时更新缓存。实时性好，但是dns服务器压力可能会大。</li>
+<li>Refresh-Ahead
+客户端只读缓存，由另一条进程去定时更新缓存。实时性差，但是dns服务器压力小。</li>
+</ul>
+<p>解析不够智能怎么办？</p>
+<p>sdk在客户端获取客户端的国家，省市，运营商等数据，htNS服务凭借这些数据精准的选择最佳节点。</p>
+<p>慢怎么办？</p>
+<p>客户端只需要访问一次httpDNS服务器，不用多次访问传统的DNS服务器了。</p>
+<h1 id="总结">总结</h1>
+<ul>
+<li>dns服务的作用
+<ul>
+<li>查询域名对于的ip地址</li>
+<li>做简单的负载均衡</li>
+<li>做全局的负载均衡</li>
+</ul>
+</li>
+<li>dns服务存在的问题
+<ul>
+<li>解析错误</li>
+<li>解析不够智能</li>
+<li>慢</li>
+</ul>
+</li>
+</ul>
+<p>一般企业无法修改运营商的dns服务，所以无法直接解决上述三个问题，需要自建httpDNS，自己玩自己的。</p>
+<ul>
+<li>httpDNS
+<ul>
+<li>通过客户端特定的sdk获取客户端的国家，省市，运营商等数据，httpDNS服务凭借这些数据精准的选择最佳节点。</li>
+<li>通过Cache-Aside，或者Refresh-Ahead即时更新缓存，避免解析错误的问题。</li>
+<li>不需要递归的访问多级dns服务器，速度提升。</li>
+</ul>
+</li>
+</ul></section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="/tags/dns"
+      >dns</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="/tags/network"
+      >network</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/mongodb/"
+      ><span class="mr-1.5">←</span><span>mongoDB核心概念</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="/posts/kubernetes-programming/"
+      ><span>怎么开发云原生应用？</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/">🐶</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>
