@@ -1,4 +1,4 @@
-baseURL = "https://solar.bestow.site/"
+baseURL = "https://liuzhe7.github.io/"
 # title = "Hugo Themes"
 author = "Steve Francia"
 copyright = "Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved."
@@ -20,7 +20,6 @@ title = "🐶"
   github = 'liuzhe7'
 
   name = 'Liu Zhe'
-  bio = '😋'
 # ------------------------------
 
 # needed to  render raw HTML (e.g. <sub>, <sup>, <kbd>, <mark>)
