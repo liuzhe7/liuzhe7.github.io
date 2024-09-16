@@ -1,3 +1,3 @@
 # Hi, welcome to my site.
 
-[go](https://solar.bestow.site)
+[go](https://liuzhe7.github.io)
