@@ -1,3 +1,0 @@
-+++
-author = "solar.bestow.site"
-+++
