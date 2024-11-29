@@ -103,4 +103,4 @@ func main() {
 ## tips
 
 - if you are using a computer that whit apple a apple chip, you should change GOARCH to amd64 in order to use bou.ke/monkey
-- monkey LICENSE: https://github.com/bouk/monkey/blob/master/LICENSE.md
+- [monkey LICENSE](https://github.com/bouk/monkey/blob/master/LICENSE.md)
