@@ -6,7 +6,6 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/liuzhe7.github.io/',
   plugins: [vue(), vueDevTools()],
   assetsInclude: ['**/*.md'],
   resolve: {
