@@ -35,7 +35,7 @@ const gitalk = new Gitalk({
   repo: props.repo, // The repository of store comments,
   owner: props.owner,
   admin: ['GitHub repo owner and collaborators, only these guys can initialize github issues'],
-  id: location.pathname, // Ensure uniqueness and length less than 50
+  id: '', // Ensure uniqueness and length less than 50
   distractionFreeMode: false, // Facebook-like distraction free mode
   language: 'en',
   labels: ['Gitalk'],
