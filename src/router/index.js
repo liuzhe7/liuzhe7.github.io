@@ -18,6 +18,11 @@ const router = createRouter({
       name: 'blogPost',
       component: () => import('@/views/BlogView.vue'),
     },
+    {
+      path: '/comment',
+      name: 'coment',
+      component: () => import('@/views/GitCommentView.vue'),
+    },
   ],
 })
 

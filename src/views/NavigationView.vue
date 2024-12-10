@@ -4,6 +4,7 @@ import NavigationBar from '@/components/NavigationBar.vue'
 const nav = [
   { name: 'Home', path: '/' },
   { name: 'Blog', path: '/blog' },
+  { name: 'Comment', path: 'comment' },
 ]
 </script>
 
