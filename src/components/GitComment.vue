@@ -1,10 +1,10 @@
 <template>
-  <div id="comments"></div>
+  <div id="gitalk-container"></div>
 </template>
 
 <script setup>
-import 'gitment/style/default.css'
-import Gitment from 'gitment'
+import 'gitalk/dist/gitalk.css'
+import Gitalk from 'gitalk'
 import { onMounted } from 'vue'
 
 const props = defineProps({
@@ -29,18 +29,18 @@ const props = defineProps({
   },
 })
 
-const gitment = new Gitment({
-  // id: props.id, // optional
+const gitalk = new Gitalk({
+  clientID: props.client_id,
+  clientSecret: props.client_secret,
+  repo: props.repo, // The repository of store comments,
   owner: props.owner,
-  repo: props.repo,
-  oauth: {
-    client_id: props.client_id,
-    client_secret: props.client_secret,
-  },
-  // ...
-  // For more available options, check out the documentation below
+  admin: ['GitHub repo owner and collaborators, only these guys can initialize github issues'],
+  id: location.pathname, // Ensure uniqueness and length less than 50
+  distractionFreeMode: false, // Facebook-like distraction free mode
+  language: 'en',
 })
+
 onMounted(() => {
-  gitment.render('comments')
+  gitalk.render('gitalk-container')
 })
 </script>

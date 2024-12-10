@@ -11,6 +11,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "gitalk": "^1.8.0",
     "gitment": "^0.0.3",
     "marked": "^15.0.3",
     "vue": "^3.5.12",
