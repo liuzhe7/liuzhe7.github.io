@@ -1,10 +1,11 @@
 <template>
-  <div class="comments" id="comments"></div>
+  <div id="comments"></div>
 </template>
 
 <script setup>
 import 'gitment/style/default.css'
 import Gitment from 'gitment'
+import { onMounted } from 'vue'
 
 const props = defineProps({
   id: {
@@ -29,7 +30,7 @@ const props = defineProps({
 })
 
 const gitment = new Gitment({
-  id: props.id, // optional
+  // id: props.id, // optional
   owner: props.owner,
   repo: props.repo,
   oauth: {
@@ -39,10 +40,7 @@ const gitment = new Gitment({
   // ...
   // For more available options, check out the documentation below
 })
-
-gitment.render('comments')
-// or
-// gitment.render(document.getElementById('comments'))
-// or
-// document.body.appendChild(gitment.render())
+onMounted(() => {
+  gitment.render('comments')
+})
 </script>

@@ -1,6 +1,5 @@
 <template>
   <git-comment
-    :id="options.uuid"
     :owner="options.owner"
     :repo="options.repo"
     :client_id="options.clientID"
@@ -16,6 +15,5 @@ const options = {
   clientSecret: '5eaec3535debab3fbd18dc0522aff3892d3e041f',
   owner: 'liuzhe7',
   repo: 'comments',
-  uuid: 'mock-uuid',
 }
 </script>
