@@ -23,6 +23,7 @@ const isEmail = (link) => {
 </script>
 
 <template>
+  <h1>click the icon to find me</h1>
   <div class="card-link">
     <div v-for="card in props.cards" :key="card.id" class="card">
       <div class="image-container" @click.prevent="handleCardClick(card)">
@@ -42,7 +43,7 @@ const isEmail = (link) => {
 
 .image-container {
   cursor: pointer;
-  width: 30px;
+  width: 25px;
 }
 
 .card-image {
