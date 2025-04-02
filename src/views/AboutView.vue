@@ -49,7 +49,7 @@ const cards = [
 const name = 'Zhe Liu'
 const avatar = '/avatar.png'
 const description =
-  "I am a software developer, mainly using Golang, Python and JavaScript. I'm a badminton enthusiast and play badminton more than twice a week. I'm a fan of anime, manga and related subcultures, but not a hardcore one."
+  "I am a software developer, mainly using Golang and Python."
 </script>
 
 <template>
