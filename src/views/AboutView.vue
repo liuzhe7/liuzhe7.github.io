@@ -33,23 +33,10 @@ const cards = [
     title: 'gmail',
     link: 'zhixizhixizhixi@gmail.com',
   },
-  {
-    id: 6,
-    img: '/weChat.png',
-    title: 'wechat',
-    link: 'weixin://contacts/profile/Jeodncjwodkjdirjemcm',
-  },
-  {
-    id: 7,
-    img: '/kmusic.png',
-    title: 'kmusic',
-    link: 'https://static-play.kg.qq.com/node/personal?uid=67949c86222a378f30&shareUid=67949c86222a378f30&pageId=homepage_me',
-  },
 ]
 const name = 'Zhe Liu'
 const avatar = '/avatar.png'
-const description =
-  "I am a software developer, mainly using Golang and Python."
+const description = 'A backend developer, badminton and fitness enthusiast'
 </script>
 
 <template>
