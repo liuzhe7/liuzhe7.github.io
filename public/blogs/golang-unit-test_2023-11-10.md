@@ -1,6 +1,4 @@
-The unit test code may fail when it's calling a remote service, then we can't write a test function to cover it. there are some ways we can use to avoid the failing.<!--more-->
-
-## How to implement a unit test for a function that needs to call a remote service
+# How to implement a unit test for a function that needs to call a remote service
 
 The unit test code may fail when it's calling a remote service, then we can't write a test function to cover it. there are some ways we can use to avoid the failing.
 
