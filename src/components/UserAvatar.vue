@@ -40,6 +40,7 @@ const props = defineProps({
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  justify-content: center;
 }
 
 .image-container {
