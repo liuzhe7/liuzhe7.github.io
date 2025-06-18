@@ -55,7 +55,7 @@ In Go, the `go.mod` file can specify **two different versions**, each with a dis
 
 ---
 
-## 🧪 Example
+## Example
 
 ```go
 toolchain go1.22
