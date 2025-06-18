@@ -40,7 +40,7 @@ const props = defineProps({
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .image-container {
@@ -74,5 +74,6 @@ const props = defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 </style>

@@ -35,7 +35,7 @@ const cards = [
   },
 ]
 const name = 'Zhe Liu'
-const avatar = '/avatar.png'
+const avatar = '/jiji.jpeg'
 const description = 'A backend developer, badminton and fitness enthusiast'
 </script>
 
