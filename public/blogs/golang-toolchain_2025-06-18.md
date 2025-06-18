@@ -44,7 +44,7 @@ In Go, the `go.mod` file can specify **two different versions**, each with a dis
 
 ---
 
-## 🧠 Why Use Different Versions?
+## Why Use Different Versions?
 
 | Aspect           | `toolchain`              | `go` (language version)     |
 | ---------------- | ------------------------ | --------------------------- |
@@ -67,7 +67,7 @@ go 1.20
 
 ---
 
-## ✅ Common Use Cases
+## Common Use Cases
 
 ### 1. **Safe CI/CD Upgrades**
 
@@ -83,7 +83,7 @@ Use newer `toolchain` versions to access improved `go` commands, error messages,
 
 ---
 
-## 📝 Summary
+## Summary
 
 > `toolchain` controls **what Go compiler is used** to build the project.
 > `go` controls **how the code is interpreted** (language features and library behavior).
