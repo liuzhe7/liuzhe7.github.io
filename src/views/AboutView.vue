@@ -4,6 +4,12 @@ import CardLink from '@/components/CardLink.vue'
 
 const cards = [
   {
+    id: 0,
+    img: '/xiaoyuzhou.png',
+    title: 'xiaoyuzhou',
+    link: 'https://www.xiaoyuzhoufm.com/podcast/684bef00ba2d15e8af122e05',
+  },
+  {
     id: 1,
     img: '/bilibili.png',
     title: 'bilibili',
