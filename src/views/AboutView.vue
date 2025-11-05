@@ -29,12 +29,6 @@ const cards = [
   },
   {
     id: 4,
-    img: '/instagram.png',
-    title: 'instagram',
-    link: 'https://www.instagram.com/liuzhe719/profilecard/?igsh=cDNmcmMwZnllcjhw',
-  },
-  {
-    id: 5,
     img: '/gmail.png',
     title: 'gmail',
     link: 'zhixizhixizhixi@gmail.com',
