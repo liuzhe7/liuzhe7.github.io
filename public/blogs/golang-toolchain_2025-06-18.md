@@ -1,6 +1,6 @@
-Reactlly I always see there is a toolchain in the go.mod. The version of the tool chain is different with go version. what's the toolchain really is and why teses two version are different?
+# what's the toolchain?
 
-## what's the toolchain?
+Reactlly I always see there is a toolchain in the go.mod. The version of the tool chain is different with go version. what's the toolchain really is and why teses two version are different?
 
 The Go toolchain is the set of tools provided by the Go project that are used to build, run, and manage Go programs.
 

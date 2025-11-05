@@ -1,6 +1,8 @@
+# Kubernetes 编程入门
+
 如果你想让你的应用充分利用kubernetes提供的能力，本文将提供一些思路和代码示例。
 
-# 本文较长，把重要结论置顶
+## 本文较长，把重要结论置顶
 
 - 如果程序运行在pod里，kubelet会自动挂在一个服务账号，路径是/var/run/secrets/kubernetes.io/serviceaccount，它可以替代kubeconfig文件。client-go里的rest.InClusterConfig()会自动去这个目录下找。
 - 设置config.ContentType = "application/vnd.kubernetes.protobuf" 是为了让client-go使用protobuf编码访问kubernetes，这种格式比json更加轻量快速，但是自定义资源不支持。

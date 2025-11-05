@@ -1,4 +1,4 @@
-# 本文将整理总结构建go程序时的技巧和需要注意的点，持续更新.
+# golang programming tips.
 
 # Slice
 
