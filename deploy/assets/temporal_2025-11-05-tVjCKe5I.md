@@ -421,3 +421,60 @@ Example:
   var result OrderResult
   err := we.Get(ctx, &result)
   ```
+
+#### Nexus
+
+##### A example to explain why it's useful
+
+You have two independent teams:
+| Team | Namespace | Responsibility | Owns Workflow |
+| ---------- | ---------- | ------------------ | ----------------- |
+| **Team A** | `payments` | Payment processing | `PaymentWorkflow` |
+| **Team B** | `orders` | Order management | `OrderWorkflow` |
+
+Team B’s order workflow needs to call Team A’s payment logic.
+Each team runs its own Temporal namespace and has separate workers and permissions.
+
+##### Without Nexus: the Limitation
+
+In plain Temporal, child workflows can only run within the same namespace.
+That means your OrderWorkflow (in orders namespace) cannot directly start a PaymentWorkflow (in payments namespace).
+You have only two bad options:
+
+- Call Team A’s payment service through an external HTTP or gRPC API, or
+- Manually connect to another namespace using the Temporal SDK.
+
+##### With Nexus: the Clean Solution
+
+With Temporal Nexus, Team A can define a Nexus Operation inside the payments namespace:
+
+```go
+// In payments namespace
+func HandlePayment(ctx context.Context, input PaymentInput) (PaymentOutput, error) {
+    // Launch a real workflow or activity
+    result, err := workflow.ExecuteChildWorkflow(ctx, PaymentWorkflow, input).Get(ctx, nil)
+    return result, err
+}
+```
+
+Register it as a Nexus operation:
+
+```bash
+temporal nexus operation create payments.PaymentService/Charge
+```
+
+Then Team B’s OrderWorkflow in the orders namespace can invoke it directly:
+
+```go
+output, err := nexus.ExecuteOperation(ctx, nexus.Operation{
+    Namespace: "payments",
+    Service:   "PaymentService",
+    Operation: "Charge",
+    Input:     PaymentInput{Amount: 100},
+})
+if err != nil {
+    return err
+}
+```
+
+Now Team B can call Team A’s logic durably, safely, and observably, without ever exposing HTTP endpoints or credentials.
